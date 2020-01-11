@@ -1,0 +1,22 @@
+{
+  "name": "naughty-downloader",
+  "version": "0.0.1",
+  "description": "A naughty downlaoder",
+  "main": "src/download_file.js",
+  "scripts": {
+    "test": "standard  && echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greg65236592/naughty-downloader.git"
+  },
+  "author": "Greg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/greg65236592/naughty-downloader/issues"
+  },
+  "homepage": "https://github.com/greg65236592/naughty-downloader#readme",
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
+}
