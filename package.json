@@ -1,5 +1,6 @@
 {
   "name": "naughty-downloader",
+  "bin": "./src/downloader.js",
   "version": "0.0.1",
   "description": "A naughty downlaoder",
   "main": "src/download_file.js",
