@@ -24,6 +24,7 @@ incredibly easy
 ```bash
 naughty-downloader "${the_file_url}"
 ```
+you should find the `output` folder just at where you execute the command 
 
 ## Limitations
 You `won't` be able to download any file that requires access authentication, e.g. header/cookie/credential...etc
