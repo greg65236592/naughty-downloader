@@ -31,17 +31,19 @@ var rangeStart = 0
 var rangeEnd = 1024 * 1024
 var rangeSize = 0 // init value
 
-for (var i = 0; i < threads; i++) {
-  if (i === 0) {
-    sendRequest(rangeStart, rangeEnd, fileCounter)
-  } else {
-    callNext(rangeStart, rangeEnd)
+function start () {
+  for (var i = 0; i < threads; i++) {
+    if (i === 0) {
+      sendRequest(rangeStart, rangeEnd, fileCounter)
+    } else {
+      callNext(rangeStart, rangeEnd)
+    }
   }
 }
 
 function sendRequest (rangeStart, rangeEnd, fileCounter) {
   if (rangeSize === 0 ||
-        (rangeSize !== 0 && rangeEnd < rangeSize)) {
+    (rangeSize !== 0 && rangeEnd < rangeSize)) {
     console.log(`recRequest ${rangeStart}-${rangeEnd} : ${rangeSize}`)
     var localfileCounter = fileCounter
 
@@ -63,14 +65,14 @@ function sendRequest (rangeStart, rangeEnd, fileCounter) {
       // output file
       console.log(`statusCode: ${res.statusCode}`)
       if (res.statusCode !== 206 &&
-                res.statusCode !== 200) { // check status and then write file
+        res.statusCode !== 200) { // check status and then write file
         // FIXME no need?
         // req.end();
         return
       }
-      let resultFileName = `${outputFolder}/${downlaodFilePartPrefix}${String(localfileCounter).padStart(6, '0')}`
+      const resultFileName = `${outputFolder}/${downlaodFilePartPrefix}${String(localfileCounter).padStart(6, '0')}`
       console.log(`Satrt to pipe file: ${resultFileName}`)
-      if(fs.existsSync(resultFileName)) {
+      if (fs.existsSync(resultFileName)) {
         fs.unlinkSync(resultFileName)
       }
       var file = fs.createWriteStream(resultFileName)
@@ -119,3 +121,5 @@ function retry (retryRangeStart, retryRangeEnd, currentFileCounter) {
   console.log(`retrying current...${retryRangeStart}-${retryRangeEnd} ${currentFileCounter}`)
   sendRequest(retryRangeStart, retryRangeEnd, currentFileCounter)
 }
+
+exports.start = start

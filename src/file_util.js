@@ -1,6 +1,6 @@
 var fs = require('fs')
 
-function cleanFile(outputFolder, downlaodFilePartPrefix) {
+function cleanFile (outputFolder, downlaodFilePartPrefix) {
   var files = fs.readdirSync(outputFolder)
   files.forEach(fileName => {
     if (fileName.startsWith(downlaodFilePartPrefix)) {
@@ -10,7 +10,7 @@ function cleanFile(outputFolder, downlaodFilePartPrefix) {
   })
 }
 
-function mergeFile(outputFolder, downlaodFilePartPrefix, outputFileName) {
+function mergeFile (outputFolder, downlaodFilePartPrefix, outputFileName) {
   var filesCompleted = fs.readdirSync(outputFolder)
   filesCompleted.sort((a, b) => {
     return a.localeCompare(b)

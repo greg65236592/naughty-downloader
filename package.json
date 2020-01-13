@@ -1,11 +1,16 @@
 {
-  "name": "naughty-downloader",
-  "bin": "./src/downloader.js",
-  "version": "0.0.1",
+  "name": "@greg65236592/naughty-downloader",
+  "bin": {
+    "naughty-downloader": "./bin/main"
+  },
+  "version": "0.0.3",
   "description": "A naughty downlaoder",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "main": "src/download_file.js",
   "scripts": {
-    "test": "standard  && echo \"Error: no test specified\" && exit 1"
+    "test": "standard && echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
